@@ -1,9 +1,9 @@
 import styles from '../../styles/Home.module.css'
 import { useRouter } from 'next/router'
 
-const index = ()=>{
-    const router = useRouter()
-    const { state, code } = router.query
+const Index = ()=>{
+    const Router = useRouter()
+    const { state, code } = Router.query
 return (
     <>
     <div className={styles.container}>
@@ -24,4 +24,4 @@ return (
     </>
 )
 }
-export default index
+export default Index
