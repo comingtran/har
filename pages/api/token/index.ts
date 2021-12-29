@@ -15,9 +15,11 @@ if (existsSync('./public'))
     folderName='Da ton tai thu muc nay'
 }else
 {
-    folderName='khong ton tai'
+    mkdirSync('./public')
+    folderName='tao thu muc thanh cong'
 
 }
+writeFileSync('./public/accesstoken.json',data)
     res.status(200).json({token_type: folderName, expires_in: expires_in, access_token:access_token, scope:scope, refresh_token: refresh_token})
 }else{
     res.status(200).json({message: "Không dúng với tiêu chi của abcd"})
