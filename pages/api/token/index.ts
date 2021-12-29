@@ -1,6 +1,6 @@
 
 import { NextApiRequest, NextApiResponse } from "next"
-import { writeFileSync, existsSync, mkdirSync } from 'fs';
+
 
 const index = (req: NextApiRequest, res: NextApiResponse)=>{
    
@@ -8,19 +8,11 @@ if(req.method === 'POST'){
     
     const {token_type, expires_in, access_token, scope, refresh_token}=req.body
     const data = "token_type: "+ token_type +", expires_in:" + expires_in +", access_token: "+ access_token +", scope: "+scope+", refresh_token:"+ refresh_token
-    //writeFileSync('./public/uploads/accesstoken.json',data)
-let folderName
-if (existsSync('./public'))
-{
-    folderName='Da ton tai thu muc nay'
-}else
-{
-    mkdirSync('./public')
-    folderName='tao thu muc thanh cong'
+    
+    console.log(data)
 
-}
-writeFileSync('./public/accesstoken.json',data)
-    res.status(200).json({token_type: folderName, expires_in: expires_in, access_token:access_token, scope:scope, refresh_token: refresh_token})
+
+    res.status(200).json({token_type: token_type, expires_in: expires_in, access_token:access_token, scope:scope, refresh_token: refresh_token})
 }else{
     res.status(200).json({message: "Không dúng với tiêu chi của abcd"})
 }
